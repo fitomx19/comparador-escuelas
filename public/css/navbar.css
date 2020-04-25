@@ -17,3 +17,17 @@ button:focus {
      max-width: 100%;
 
 }
+
+
+.contenedor
+	{
+	  display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50vh;
+            }
+	.contenedor>span {
+		display:inline-block;
+		vertical-align:middle;
+		line-height:normal;
+	}
