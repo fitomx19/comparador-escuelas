@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 var partials = require('express-partials');
 // Create a new Express application.
 var app = express();
-
+require('./db');
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 3000;
 

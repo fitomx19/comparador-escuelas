@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 
 const { Connection, Request } = require("tedious");
 
@@ -8,32 +6,33 @@ const config = {
     authentication: {
         options: {
             userName: "azure@comparadorescuelas",
-            password: "Kinect123"
+            password: "Kinect123" 
         },
         type: "default"
     },
-    server: "comparadorescuelas.database.windows.net",
+    server: "comparadorescuelas.database.windows.net", 
     options: {
-        database: "comparador_escuelas",
+        database: "comparador_escuelas", 
         encrypt: true
     }
 };
 
 const connection = new Connection(config);
 
+// Attempt to connect and execute queries if connection goes through
+connection.on("connect", err => {
+    if (err) {
+        console.error(err.message);
+    } else {
+       // queryDatabase();
+       console.log("Conexion a Azure exitosamente");
+    }
+});
 
-router.get('/',function (req, res) {
-        queryDatabase();
-        res.render('home', {name});
-    });
 
-router.get('/comparar',
-    function (req, res) {
-        res.render('comparation');
-    });
-module.exports = router;
 
-function queryDatabase() {
+
+/* function queryDatabase() {
     console.log("Reading rows from the Table...");
 
     // Read all rows from table
@@ -51,10 +50,8 @@ function queryDatabase() {
     request.on("row", columns => {
         columns.forEach(column => {
             console.log("%s\t%s", column.metadata.colName, column.value);
-            const name = column.metadata.colName;
-            console.log(name +' funciona ');
         });
     });
 
     connection.execSql(request);
-}
+} */
