@@ -24,7 +24,7 @@ const connection = new Connection(config);
 
 router.get('/',function (req, res) {
         queryDatabase();
-        res.render('home', {name});
+        res.render('home');
     });
 
 router.get('/comparar',
