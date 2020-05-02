@@ -22,6 +22,7 @@
     "express-partials": "^0.3.0",
     "express-session": "^1.17.1",
     "foundation-sites": "^6.6.3",
+    "fs": "0.0.1-security",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.3",

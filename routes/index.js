@@ -1,60 +1,44 @@
 const express = require('express');
 const router = express.Router();
+var mysql = require('mysql');
+fs = require('fs');
 
-const { Connection, Request } = require("tedious");
-
-// Create connection to database
-const config = {
-    authentication: {
-        options: {
-            userName: "azure@comparadorescuelas",
-            password: "Kinect123"
-        },
-        type: "default"
+var conn = mysql.createConnection({
+    host: "comparador-escuelas-mysql.mysql.database.azure.com",
+    user: "god@comparador-escuelas-mysql",
+    password: 'Kinect123',
+    database: 'escuela',
+    port: 3306,
+    ssl: {
+        ca: fs.readFileSync(__dirname + '/BaltimoreCyberTrustRoot.crt.pem')
     },
-    server: "comparadorescuelas.database.windows.net",
-    options: {
-        database: "comparador_escuelas",
-        encrypt: true
-    }
-};
+    insecureAuth: true
 
-const connection = new Connection(config);
+});
 
 
 router.get('/',function (req, res) {
-        queryDatabase();
-        res.render('home');
+       
+        conn.query('select * from test as solution', function (error, result, fields) {
+        if (error) throw error;
+            console.log(result);
+            obj = { home: result };
+            res.render('home',  obj );
+        });
+
     });
 
 router.get('/comparar',
     function (req, res) {
         res.render('comparation');
     });
+
+
 module.exports = router;
 
-function queryDatabase() {
-    console.log("Reading rows from the Table...");
 
-    // Read all rows from table
-    const request = new Request(
-        `select * from test`,
-        (err, rowCount) => {
-            if (err) {
-                console.error(err.message);
-            } else {
-                console.log(`${rowCount} row(s) returned`);
-            }
-        }
-    );
 
-    request.on("row", columns => {
-        columns.forEach(column => {
-            console.log("%s\t%s", column.metadata.colName, column.value);
-            const name = column.metadata.colName;
-            console.log(name +' funciona ');
-        });
-    });
 
-    connection.execSql(request);
-}
+
+
+
