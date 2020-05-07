@@ -47,4 +47,5 @@ $ heroku git: clone - a blogwave
 $ cd blogwave
 $ git add .
 $ git commit -am "please workds"
-$ git push heroku master */
+$ git push heroku master 
+$ git push origin master*/
