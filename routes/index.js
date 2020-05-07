@@ -24,6 +24,7 @@ router.get('/',function (req, res) {
             console.log(result);
             obj = { home: result };
             res.render('home',  obj );
+            
         });
 
     });
@@ -32,7 +33,9 @@ router.get('/comparar',
     function (req, res) {
         res.render('comparation');
     });
-
+router.get('/test', function(req,res){
+    res.render('test');
+});
 
 module.exports = router;
 
