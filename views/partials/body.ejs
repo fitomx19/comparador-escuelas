@@ -2,14 +2,17 @@
     <br>
     <br>
     <br>
-    <div class="container" align="center" ><h1>Comparador de Escuelas</h1></div>
-    <br>
+    <div class="container" align="center" ><h1>Comparador de Escuelas</h1>
+    
     <% home.forEach(function (obj) { %>
     
-        <h3>Eso salio de la base de datos + <%= obj.idtest %></h3> 
-        <h3>Eso salio de la base de datos + <%= obj.nombre %></h3>
+    
+    <h3>La base de datos de  <%= obj.nombre %> funciona correctamente</h3>
     
     <% }) %>
+    </div>
+    <br>
+   
     <div class="row" align="center">
         <div class="col-5">
             <div class="container">
