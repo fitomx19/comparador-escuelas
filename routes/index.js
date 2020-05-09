@@ -2,15 +2,17 @@ const express = require('express');
 const router = express.Router();
 var mysql = require('mysql');
 fs = require('fs');
+require('dotenv').config({ path: 'variables.env' });
+
 
 var conn = mysql.createConnection({
-    host: "comparador-escuelas-mysql.mysql.database.azure.com",
-    user: "god@comparador-escuelas-mysql",
-    password: 'Kinect123',
-    database: 'escuela',
+    host: process.env.HOST,
+    user: process.env.DB_URL_USER,
+    password: process.env.PSW_PSW,
+    database: process.env.DATABASE,
     port: 3306,
     ssl: {
-        ca: fs.readFileSync(__dirname + '/BaltimoreCyberTrustRoot.crt.pem')
+        ca: fs.readFileSync(__dirname + process.env.CR_URL_AZURE)
     },
     insecureAuth: true
 

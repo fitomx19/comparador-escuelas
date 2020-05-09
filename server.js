@@ -48,4 +48,10 @@ $ cd blogwave
 $ git add .
 $ git commit -am "please workds"
 $ git push heroku master 
-$ git push origin master*/
+$ git push origin master
+
+
+
+metasd e mañana subir informacion a los otros cuadritos y ver si puedo crear una api de mis profesores....
+
+*/
